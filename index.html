@@ -3,171 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EarlyBird - Join Waitlist</title>
+    <title>DataMind - AI Research Assistant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
         body {
+            background: #000 !important;
+            color: #fff !important;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            background: linear-gradient(125deg, #000000, #1a1a1a) !important;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        .glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(50px);
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-1 {
+            top: -300px;
+            right: -200px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0) 70%);
+        }
+
+        .glow-2 {
+            bottom: -400px;
+            left: -200px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0) 70%);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
         .container {
-            width: 100%;
-            max-width: 480px;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 2rem;
-            text-align: center;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 1rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .logo {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 1.5rem;
+        .content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            width: 100%;
         }
 
-        .sparkle-icon {
-            width: 48px;
-            height: 48px;
-            margin: 1rem 0;
-            color: #3b82f6;
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand {
+            margin-bottom: 2rem;
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         h1 {
-            font-size: 2rem;
-            color: #1f2937;
-            margin-bottom: 0.5rem;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #fff;
         }
 
-        .product-name {
-            color: #10b981;
-            font-weight: 600;
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
-            color: #6b7280;
+            font-size: 1.25rem;
+            color: #a3a3a3;
             margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.2));
+            border-radius: 50%;
+            right: -100px;
+            top: -100px;
+            filter: blur(20px);
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .form-subtitle {
+            color: #a3a3a3;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #fff;
         }
 
         input {
             width: 100%;
             padding: 0.75rem 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             font-size: 1rem;
-            outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.3s ease;
+            color: #fff;
         }
 
         input:focus {
-            border-color: #10b981;
+            outline: none;
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        input::placeholder {
+            color: #666;
         }
 
         button {
             width: 100%;
-            padding: 0.75rem;
-            background-color: #111827;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         button:hover {
-            background-color: #374151;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
-        .social-links a {
-            color: #6b7280;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .social-links a:hover {
-            color: #374151;
-        }
-
-        .nav-buttons {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .nav-button {
-            background: none;
-            border: none;
-            padding: 0.5rem;
-            cursor: pointer;
-            color: #6b7280;
-        }
-
-        .nav-button:hover {
-            color: #374151;
-            background: none;
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .glass-card {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
     <div class="container">
-        <div class="nav-buttons">
-            <button class="nav-button">←</button>
-            <button class="nav-button">→</button>
-            <button class="nav-button">⋮</button>
-            <button class="nav-button">✕</button>
-        </div>
-        
-        <img src="https://photos.app.goo.gl/oW7kS9aTtyNE4AKj6" alt="Logo" class="logo">
-        
-        <svg class="sparkle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L15 9L22 9L16 14L18 21L12 17L6 21L8 14L2 9L9 9L12 2Z" />
-        </svg>
+        <div class="content">
+            <div class="hero" data-aos="fade-right">
+                <div class="brand">
+                    <span class="brand-name">DataMind</span>
+                </div>
+                
+                <h1>Your AI Research Assistant for <span class="gradient-text">Scientific Discovery</span></h1>
+                <p class="subtitle">Accelerate your research workflow with AI-powered automation. Like GitHub Copilot for scientists and researchers.</p>
+            </div>
 
-        <h1>Join the waitlist for<br><span class="product-name">DataMind</span></h1>
-        <p class="subtitle">Stay informed about our latest updates</p>
-
-        <form id="waitlistForm">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <button type="submit">Join the waitlist</button>
-        </form>
-
-        <div class="social-links">
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="YouTube">▶</a>
+            <div class="glass-card" data-aos="fade-left">
+                <h2 class="form-title">Join the Waitlist</h2>
+                <p class="form-subtitle">Get early access • Launch in 1 month</p>
+                
+                <form id="waitlistForm" action="https://formspree.io/f/mkgozkrn" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Work Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@institution.edu" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="institution">Institution</label>
+                        <input type="text" id="institution" name="institution" placeholder="Your research institution">
+                    </div>
+                    
+                    <input type="hidden" name="_replyto" value="sasakras00@gmail.com">
+                    <input type="hidden" name="_subject" value="New DataMind Waitlist Signup">
+                    <input type="hidden" name="_next" value="https://data-mind.pro">
+                    <button type="submit">Join the Waitlist →</button>
+                </form>
+            </div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Thank you for joining the waitlist!');
+            const button = this.querySelector('button');
+            const formData = new FormData(this);
+            
+            button.innerHTML = 'Sending...';
+            button.disabled = true;
+
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    button.innerHTML = 'Thanks for joining! 🚀';
+                    this.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                button.innerHTML = 'Error! Please try again';
+            }
+
+            setTimeout(() => {
+                button.innerHTML = 'Join the Waitlist →';
+                button.disabled = false;
+            }, 3000);
         });
     </script>
 </body>
