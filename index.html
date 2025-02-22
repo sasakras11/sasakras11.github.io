@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataMind - AI Research Assistant</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -224,7 +223,7 @@
 
     <div class="container">
         <div class="content">
-            <div class="hero" data-aos="fade-right">
+            <div class="hero">
                 <div class="brand">
                     <span class="brand-name">DataMind</span>
                 </div>
@@ -233,11 +232,11 @@
                 <p class="subtitle">Accelerate your research workflow with AI-powered automation. Like GitHub Copilot for scientists and researchers.</p>
             </div>
 
-            <div class="glass-card" data-aos="fade-left">
-                <h2 class="form-title">Join the Waitlist</h2>
-                <p class="form-subtitle">Get early access • Launch in 1 month</p>
+            <div class="glass-card">
+                <h2 class="form-title">Sign Up for Free Beta</h2>
+                <p class="form-subtitle">Get access to our powerful AI research tools</p>
                 
-                <form id="waitlistForm" action="https://formspree.io/f/mkgozkrn" method="POST">
+                <form id="waitlistForm">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -253,54 +252,10 @@
                         <input type="text" id="institution" name="institution" placeholder="Your research institution">
                     </div>
                     
-                    <input type="hidden" name="_replyto" value="sasakras00@gmail.com">
-                    <input type="hidden" name="_subject" value="New DataMind Waitlist Signup">
-                    <input type="hidden" name="_next" value="https://data-mind.pro">
-                    <button type="submit">Join the Waitlist →</button>
+                    <button type="button">Sign Up Now →</button>
                 </form>
             </div>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-
-        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const button = this.querySelector('button');
-            const formData = new FormData(this);
-            
-            button.innerHTML = 'Sending...';
-            button.disabled = true;
-
-            try {
-                const response = await fetch(this.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    button.innerHTML = 'Thanks for joining! 🚀';
-                    this.reset();
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            } catch (error) {
-                button.innerHTML = 'Error! Please try again';
-            }
-
-            setTimeout(() => {
-                button.innerHTML = 'Join the Waitlist →';
-                button.disabled = false;
-            }, 3000);
-        });
-    </script>
 </body>
 </html>
